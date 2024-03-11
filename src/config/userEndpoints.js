@@ -3,7 +3,6 @@ import AxiosInstance from "./axios";
 const register =async(userName,email,password)=>{
 
     try {
-console.log(userName,email,password,"vvvvvvv");
         let {data}=await AxiosInstance.post(`register`,{userName,email,password})
        
         return data
@@ -14,4 +13,15 @@ console.log(userName,email,password,"vvvvvvv");
     }
 }
 
-export{register}
+const userLogin=async(email,password)=>{
+    try {
+console.log(email,password,"dddddddddddddd");
+        let {data}=await AxiosInstance.post('login',{email,password})
+        return data
+    } catch (error) {
+        console.error('Error occurred while Login:', error);
+        throw error;
+    }
+}
+
+export{register,userLogin}

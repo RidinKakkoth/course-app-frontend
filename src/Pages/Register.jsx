@@ -84,8 +84,11 @@ import { Formik, Form, Field, ErrorMessage } from 'formik'; // import useFormik 
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 import { register } from '../config/userEndpoints';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
+
+    const navigate=useNavigate()
 
   const validationSchema = Yup.object({
     userName: Yup.string().required('Username is required'),
@@ -106,6 +109,8 @@ const Register = () => {
                     console.log(response.msg);
                     toast.success(response.msg)
                     resetForm();
+                    navigate('/login')
+
                 } catch (err) {
                     console.error(err.response.data.msg); 
                     toast.error(err.response.data.msg)
